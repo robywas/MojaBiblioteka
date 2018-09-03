@@ -2,7 +2,6 @@ package pl.moja.biblioteczka.controllers;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.property.BooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import pl.moja.biblioteczka.dialogs.DialogsUtils;
+import pl.moja.biblioteczka.utils.DialogsUtils;
+import pl.moja.biblioteczka.utils.FxmlUtils;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -35,16 +35,7 @@ public class MainController {
     }
 
     public void setCenter(String fxmlPath) {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource(fxmlPath));
-        ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
-        loader.setResources(bundle);
-        Parent parent = null;
-        try {
-            parent = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        borderPane.setCenter(parent);
+        borderPane.setCenter(FxmlUtils.fxmlLoader(fxmlPath));
 
     }
 
