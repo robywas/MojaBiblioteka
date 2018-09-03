@@ -27,7 +27,6 @@ public class DialogsUtils {
         Optional<ButtonType> result = informationAlert.showAndWait();
         return result;
 
-
     }
 
     public static void errorDialog(String error){
